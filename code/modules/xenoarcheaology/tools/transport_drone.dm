@@ -199,8 +199,8 @@
 	animate(object, pixel_y = 0, alpha = 255, time = 3 SECONDS, easing = CIRCULAR_EASING|EASE_OUT)
 
 /obj/machinery/drone_pad/proc/finish_moving()
-	landing_animation(current_flight.payload, src.loc)
-	addtimer(new Callback(current_flight.payload, /atom/movable/proc/forceMove, src.loc), 3 SECONDS)
+	landing_animation(current_flight.payload, loc)
+	addtimer(new Callback(current_flight.payload, TYPE_PROC_REF(/atom/movable, forceMove), loc), 3 SECONDS)
 	QDEL_NULL(current_flight)
 	update_icon()
 
